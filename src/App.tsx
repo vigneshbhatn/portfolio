@@ -209,7 +209,7 @@ export default function App() {
 
   <nav id="nav" className={navScrolled ? "scrolled" : ""}>
     <a href="#hero" className="nav-logo" data-cursor="hi">
-      <img src="/logo.png" alt="VB Logo" style={{ height: '36px', borderRadius: '4px', filter: dark ? 'invert(1)' : 'none' }} />
+      <img src={`${import.meta.env.BASE_URL}logo.png`} alt="VB Logo" style={{ height: '36px', borderRadius: '4px', filter: dark ? 'invert(1)' : 'none' }} />
     </a>
     <div className="nav-right">
       <ul className="nav-links">
@@ -236,7 +236,7 @@ export default function App() {
         </h1>
       </div>
       <div className="hero-photo-container">
-         <img src="/avatar.png" alt="Vignesh Bhat N" className="hero-avatar" />
+         <img src={`${import.meta.env.BASE_URL}avatar.png`} alt="Vignesh Bhat N" className="hero-avatar" />
       </div>
     </div>
 

@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics — deferred until idle so it doesn't block rendering -->
+  <script>
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);}
+    function loadGA(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-C5DGNJQL76';document.head.appendChild(s);gtag('js',new Date());gtag('config','G-C5DGNJQL76');}
+    if('requestIdleCallback' in window){requestIdleCallback(loadGA);}else{window.addEventListener('load',loadGA);}
+  </script>
+  <script>(function(){var s=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',s?s:(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));}());</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+  <title>Turning free trial users into loyal members — NeoTaste × David Rodriguez</title>
+  <meta name="description" content="How a structured onboarding quest guided NeoTaste's free trial users through key app actions, reduced drop-off, and improved trial-to-paid conversion. Case study by David Rodriguez." />
+  <!-- Open Graph -->
+  <meta property="og:type"        content="article" />
+  <meta property="og:url"         content="https://dvdrod.com/neotaste-quests.html" />
+  <meta property="og:title"       content="Turning free trial users into loyal members — NeoTaste × David Rodriguez" />
+  <meta property="og:description" content="How a structured onboarding quest guided NeoTaste's free trial users through key app actions, reduced drop-off, and improved trial-to-paid conversion." />
+  <meta property="og:image"       content="https://dvdrod.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Turning free trial users into loyal members — NeoTaste × David Rodriguez" />
+  <meta name="twitter:description" content="How a structured onboarding quest guided NeoTaste's free trial users through key app actions, reduced drop-off, and improved trial-to-paid conversion." />
+  <meta name="twitter:image"       content="https://dvdrod.com/og-image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin/>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:ital,wght@0,300;0,400;0,600;1,300&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:ital,wght@0,300;0,400;0,600;1,300&display=swap"/></noscript>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <style>
+    :root { --bg:#0C0C0B; --bg2:#141413; --fg:#EDEDE8; --muted:#93938F; --border:rgba(237,237,232,0.09); --accent:#00C96B; --radius:14px; --transition:0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+    [data-theme="light"] { --bg:#F0EDE5; --bg2:#E8E5DD; --fg:#0C0C0B; --muted:#5B5A57; --border:rgba(12,12,11,0.1); --accent:#00A854; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;cursor:none !important;}
+    @media(pointer:coarse){*,*::before,*::after{cursor:auto !important;}body{cursor:auto;}.cursor{display:none !important;}}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);overflow-x:hidden;transition:background var(--transition),color var(--transition);}
+    a{color:inherit;text-decoration:none;}img{display:block;max-width:100%;}ul{list-style:none;}
+    body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9997;opacity:0.028;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");}
+    .cursor{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;will-change:transform;opacity:0;}
+
+    @keyframes pill-bounce {
+      0%   { transform: scale(1,1); }
+      18%  { transform: scale(1.14,0.86); }
+      38%  { transform: scale(0.93,1.07); }
+      58%  { transform: scale(1.05,0.96); }
+      78%  { transform: scale(0.98,1.02); }
+      100% { transform: scale(1,1); }
+    }
+    .cursor-arrow{position:absolute;top:0;left:0;width:22px;height:26px;filter:drop-shadow(0 1px 3px rgba(0,0,0,.45));transition:transform .2s cubic-bezier(.25,.46,.45,.94);}
+    .cursor-arrow svg{display:block;}
+    .cursor-label{position:absolute;top:18px;left:16px;background:#1A1A19;color:#EDEDE8;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:.04em;padding:4px 10px 4px 8px;border-radius:100px;white-space:nowrap;display:flex;align-items:center;gap:5px;box-shadow:0 2px 8px rgba(0,0,0,.35),inset 0 0 0 1px rgba(255,255,255,.07);transition:background .25s ease,transform .2s cubic-bezier(.25,.46,.45,.94);}
+    .cursor-label-dot{width:6px;height:6px;border-radius:50%;background:#FF3D00;flex-shrink:0;}
+    body.is-hovering .cursor-arrow{transform:rotate(-12deg) scale(.92);}
+    body.is-hovering .cursor-label{background:#FF3D00;color:#fff;animation:pill-bounce 0.42s cubic-bezier(.36,.07,.19,.97);}
+    body.is-hovering .cursor-label-dot{background:rgba(255,255,255,.6);}
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:22px 44px;display:flex;justify-content:space-between;align-items:center;transition:padding .45s cubic-bezier(.4,0,.2,1),top .45s cubic-bezier(.4,0,.2,1),left .45s cubic-bezier(.4,0,.2,1),right .45s cubic-bezier(.4,0,.2,1),border-radius .45s cubic-bezier(.4,0,.2,1),background .4s ease,backdrop-filter .4s ease,box-shadow .4s ease;}
+    nav.scrolled{top:16px;left:22%;right:22%;gap:48px;padding:14px 36px;border-radius:100px;background:rgba(12,12,11,.80);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 4px 24px rgba(0,0,0,.25);}
+    [data-theme="light"] nav.scrolled{background:rgba(240,237,229,.85);box-shadow:0 4px 24px rgba(0,0,0,.10);}
+    .nav-logo{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;letter-spacing:-.02em;}
+    .nav-right{display:flex;align-items:center;gap:28px;}
+    .theme-btn{display:flex;align-items:center;gap:7px;background:none;border:1px solid var(--border);border-radius:100px;padding:7px 15px;color:var(--muted);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;transition:all .3s ease;}
+    .theme-btn:hover{background:var(--fg);color:var(--bg);border-color:var(--fg);}
+    #preloader{position:fixed;inset:0;z-index:9000;display:flex;flex-direction:column;pointer-events:none;}
+    .pl-panel{flex:1;background:var(--bg);}
+    .cs-hero{min-height:100svh;padding:0 44px max(60px,calc(60px + env(safe-area-inset-bottom)));display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;background:#0C0C0B;}
+    .cs-hero-bg{position:absolute;inset:0;z-index:0;opacity:.18;}
+    .cs-hero-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;opacity:.55;}
+    .cs-hero-cover-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.3) 0%,rgba(0,0,0,0.72) 100%);z-index:0;}
+    /* Hero always sits on a dark image — lock text to light regardless of theme */
+    .cs-hero,.cs-hero .cs-title .tl span,.cs-hero .cs-meta-value,.cs-hero .cs-meta-label{color:#EDEDE8;}
+    .cs-hero .cs-meta-strip,.cs-hero .cs-meta-item{border-color:rgba(237,237,232,0.09);}
+    /* Nav unscrolled sits over the dark hero — always light until pill appears */
+    #nav:not(.scrolled){color:#EDEDE8;}
+    #nav:not(.scrolled) .theme-btn{color:#EDEDE8;border-color:rgba(237,237,232,0.22);}
+    #nav:not(.scrolled) .theme-btn:hover{background:#EDEDE8;color:#0C0C0B;border-color:#EDEDE8;}
+    .cs-back-link{font-size:12px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:color .3s;position:relative;text-decoration:none;}
+    .cs-back-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--fg);transition:width .3s ease;}
+    .cs-back-link:hover{color:var(--fg);}
+    .cs-back-link:hover::after{width:100%;}
+    #nav:not(.scrolled) .cs-back-link{color:rgba(237,237,232,0.6);}
+    #nav:not(.scrolled) .cs-back-link:hover{color:#EDEDE8;}
+    #nav:not(.scrolled) .cs-back-link::after{background:#EDEDE8;}
+    /* Scroll hint always on dark hero */
+    .scroll-hint span{color:rgba(237,237,232,0.5) !important;}
+    .scroll-hint>div{background:rgba(237,237,232,0.18) !important;}
+    .cs-hero-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.35;}
+    .cs-hero-number{position:absolute;top:50%;right:44px;transform:translateY(-50%);font-family:'Syne',sans-serif;font-size:clamp(100px,16vw,220px);font-weight:800;letter-spacing:-.05em;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(237,237,232,0.12);pointer-events:none;user-select:none;z-index:0;}
+    .cs-title-wrap{position:relative;z-index:1;margin-bottom:48px;}
+    .cs-company{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+    .cs-title{font-family:'Inter',sans-serif;font-size:clamp(52px,9vw,130px);font-weight:800;letter-spacing:-.045em;line-height:.9;}
+    .cs-title .tl{overflow:hidden;display:block;}
+    .cs-title .tl span{display:block;transform:translateY(110%);}
+    .cs-meta-strip{position:relative;z-index:1;display:flex;gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;max-width:700px;}/* initial state set via gsap.set() */
+    .cs-meta-item{flex:1;padding:16px 20px;border-right:1px solid var(--border);}
+    .cs-meta-item:last-child{border-right:none;}
+    .cs-meta-label{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
+    .cs-meta-value{font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:-.01em;}
+    .cs-section{padding:100px 44px;border-top:1px solid var(--border);}
+    .cs-section-inner{max-width:1200px;margin:0 auto;}
+    .cs-section-label{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+    .cs-section-title{font-family:'Inter',sans-serif;font-size:clamp(32px,4.5vw,60px);font-weight:800;letter-spacing:-.035em;line-height:1.05;margin-bottom:32px;max-width:760px;}
+    .cs-section-body{max-width:640px;}
+    .cs-section-body p{font-size:17px;line-height:1.7;font-weight:300;color:var(--fg);margin-bottom:20px;}
+    .cs-section-body p:last-child{margin-bottom:0;}
+    .cs-section-body strong{font-weight:600;}
+    .cs-section-body em{font-style:normal;font-weight:700;color:var(--fg);}
+    .cs-two-col{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:48px;}
+    .cs-findings{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px;}
+    .cs-finding{background:var(--bg2);border-radius:12px;padding:28px;}
+    .cs-finding-icon{font-size:22px;margin-bottom:12px;}
+    .cs-finding-title{font-family:'Inter',sans-serif;font-size:16px;font-weight:700;margin-bottom:8px;}
+    .cs-finding-text{font-size:13px;color:var(--muted);line-height:1.6;}
+    .cs-steps{display:flex;flex-direction:column;gap:0;margin-top:40px;}
+    .cs-step{display:flex;gap:24px;padding:20px 0;border-bottom:1px solid var(--border);align-items:baseline;}
+    .cs-step-num{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.08em;flex-shrink:0;width:28px;}
+    .cs-step-content{flex:1;}
+    .cs-step-title{font-family:'Inter',sans-serif;font-size:17px;font-weight:700;margin-bottom:6px;}
+    .cs-step-text{font-size:14px;color:var(--muted);line-height:1.6;}
+
+    /* QUEST CARDS */
+    .cs-quests{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;}
+    .cs-quest-card{background:var(--bg2);border-radius:16px;padding:28px;}
+    .cs-quest-num{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.1em;margin-bottom:12px;}
+    .cs-quest-icon{font-size:28px;margin-bottom:14px;}
+    .cs-quest-title{font-family:'Inter',sans-serif;font-size:16px;font-weight:700;margin-bottom:8px;}
+    .cs-quest-text{font-size:13px;color:var(--muted);line-height:1.6;}
+    .cs-quest-xp{display:inline-block;margin-top:12px;font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--accent);background:rgba(0,201,107,.1);border:1px solid rgba(0,201,107,.2);border-radius:100px;padding:4px 12px;}
+
+    /* RETENTION CHART */
+    .cs-chart{margin-top:48px;background:var(--bg2);border-radius:16px;padding:40px;}
+    .cs-chart-title{font-family:'Inter',sans-serif;font-size:16px;font-weight:700;margin-bottom:8px;}
+    .cs-chart-sub{font-size:13px;color:var(--muted);margin-bottom:32px;}
+    .cs-chart-bars{display:flex;align-items:flex-end;gap:8px;height:140px;}
+    .cs-chart-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;}
+    .cs-chart-bar-wrap{width:100%;flex:1;display:flex;flex-direction:column;justify-content:flex-end;}
+    .cs-chart-bar{width:100%;border-radius:6px 6px 0 0;transition:height .6s ease;}
+    .cs-chart-label{font-size:10px;color:var(--muted);letter-spacing:.06em;}
+    .cs-chart-legend{display:flex;gap:20px;margin-top:20px;}
+    .cs-chart-legend-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);}
+    .cs-chart-legend-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0;}
+
+    .cs-metrics{display:flex;gap:0;border-radius:16px;overflow:hidden;margin-top:60px;}
+    .cs-metric{flex:1;padding:40px 32px;border-right:1px solid var(--border);text-align:center;}
+    .cs-metric:last-child{border-right:none;}
+    .cs-metric-val{font-family:'Inter',sans-serif;font-size:clamp(40px,5vw,64px);font-weight:800;letter-spacing:-.04em;color:var(--accent);line-height:1;margin-bottom:8px;}
+    .cs-metric-label{font-size:12px;color:var(--muted);line-height:1.5;max-width:260px;margin:0 auto;}
+    .cs-visual{border-radius:16px;overflow:hidden;position:relative;}/* initial state set via gsap.set() */
+    .cs-visual.full{aspect-ratio:16/8;margin-top:64px;}
+    .cs-visual.wide{aspect-ratio:16/9;}
+    .cs-visual-inner{width:100%;height:100%;position:relative;display:flex;align-items:center;justify-content:center;}
+    .cs-visual-label{position:absolute;bottom:20px;left:20px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);z-index:2;}
+    .cs-visual img{width:100%;display:block;object-fit:cover;}
+    .cs-img-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px;}
+    .cs-img-caption{font-size:11px;color:var(--muted);margin-top:10px;letter-spacing:.03em;line-height:1.5;}
+    .cs-quote{margin:60px 0;padding:40px 44px;border-left:3px solid var(--accent);background:var(--bg2);border-radius:0 12px 12px 0;}
+    .cs-quote p{font-family:'Inter',sans-serif;font-size:clamp(20px,2.5vw,30px);font-weight:700;letter-spacing:-.02em;line-height:1.35;color:var(--fg);}
+    .cs-result-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px;}
+    .cs-result-card{background:var(--bg2);border-radius:14px;padding:32px;}
+    .cs-result-val{font-family:'Inter',sans-serif;font-size:clamp(36px,4.5vw,56px);font-weight:800;letter-spacing:-.04em;color:var(--accent);line-height:1;margin-bottom:10px;}
+    .cs-result-label{font-size:13px;color:var(--muted);line-height:1.5;}
+    .cs-next{display:block;padding:80px 44px;margin-top:80px;border-top:1px solid var(--border);background:var(--bg2);transition:background .3s;text-decoration:none;}
+    .cs-next:hover{background:var(--bg);}
+    .cs-next-label{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;}
+    .cs-next-inner{display:flex;justify-content:space-between;align-items:center;gap:24px;}
+    .cs-next-name{font-family:'Inter',sans-serif;font-size:clamp(32px,5vw,72px);font-weight:800;letter-spacing:-.04em;line-height:.95;transition:color .3s;}
+    .cs-next:hover .cs-next-name{color:var(--accent);}
+    .cs-next-company{font-size:13px;color:var(--muted);margin-top:8px;}
+    .cs-next-arrow{width:64px;height:64px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .35s ease;}
+    .cs-next:hover .cs-next-arrow{background:var(--accent);border-color:var(--accent);transform:rotate(45deg);}
+    .cs-next:hover .cs-next-arrow svg path{stroke:#fff;}
+    .cs-next--wip{pointer-events:none;cursor:default;}
+    .cs-next--wip .cs-next-arrow{opacity:.3;}
+    .wip-badge{display:inline-flex;align-items:center;gap:7px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#F59E0B;background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.3);border-radius:100px;padding:5px 12px;}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0.4}}
+    .wip-badge-dot{width:6px;height:6px;border-radius:50%;background:#F59E0B;flex-shrink:0;animation:blink 2.2s ease infinite;}
+    .cs-footer{padding:24px 44px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+    .cs-footer p{font-size:12px;color:var(--muted);}
+    /* SUMMARY BAND */
+    .cs-summary { padding:48px 44px; border-top:1px solid var(--border); }
+    .cs-summary-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr auto; gap:60px; align-items:center; }
+    .cs-summary-tldr { font-size:19px; font-weight:400; line-height:1.6; letter-spacing:-.01em; color:var(--fg); }
+    .cs-summary-tldr strong { font-weight:700; }
+    .cs-summary-stats { display:flex; gap:40px; flex-shrink:0; }
+    .cs-summary-stat { text-align:right; }
+    .cs-summary-stat-val { font-family:'Inter',sans-serif; font-size:34px; font-weight:800; letter-spacing:-.04em; color:var(--accent); line-height:1; }
+    .cs-summary-stat-label { font-size:11px; color:var(--muted); margin-top:4px; line-height:1.4; }
+    /* NEXT STEPS */
+    .cs-next-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:40px; }
+    .cs-next-step { background:var(--bg2); border-radius:14px; padding:28px; }
+    .cs-next-step-num { font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); margin-bottom:10px; }
+    .cs-next-step-title { font-size:15px; font-weight:700; margin-bottom:8px; letter-spacing:-.01em; }
+    .cs-next-step-text { font-size:13px; color:var(--muted); line-height:1.6; }
+    /* Responsive grid utilities — replaces inline grid-template-columns */
+    .cs-grid-2col { display:grid; grid-template-columns:1fr 1fr; }
+    .cs-grid-3col { display:grid; grid-template-columns:repeat(3,1fr); }
+    .cs-grid-5col { display:grid; grid-template-columns:repeat(5,1fr); }
+
+    @media(max-width:900px){
+      nav{padding:18px 24px;}nav.scrolled{top:12px;left:16px;right:16px;padding:12px 20px;}
+      .cs-hero{padding:0 24px max(48px,calc(48px + env(safe-area-inset-bottom)));}
+      .cs-section{padding:72px 24px;}
+      .cs-two-col{grid-template-columns:1fr;gap:40px;}
+      .cs-findings{grid-template-columns:1fr;}
+      .cs-quests{grid-template-columns:1fr;}
+      .cs-result-grid{grid-template-columns:1fr;}
+      .cs-img-grid{grid-template-columns:1fr;}
+      .cs-metrics{flex-direction:column;}
+      .cs-metric{border-right:none;border-bottom:1px solid var(--border);}
+      .cs-metric:last-child{border-bottom:none;}
+      .cs-hero-number{display:none;}
+      .cs-meta-strip{flex-wrap:wrap;}
+      .cs-meta-item{min-width:50%;border-right:none;border-bottom:1px solid var(--border);}
+      .cs-footer{flex-direction:column;gap:12px;text-align:center;}
+      .scroll-hint{top:auto;bottom:56px;}
+      .cs-summary{padding-left:24px;padding-right:24px;} .cs-summary-inner{grid-template-columns:1fr;gap:32px;} .cs-summary-stat{text-align:left;} .cs-summary-stats{gap:24px;flex-wrap:wrap;} .cs-next-steps{grid-template-columns:1fr;}
+      .cs-grid-2col,.cs-grid-3col{ grid-template-columns:1fr; }
+      .cs-grid-5col{ grid-template-columns:repeat(2,1fr); }
+    }
+
+    /* Shared button style */
+    .cv-btn{display:inline-flex;align-items:center;gap:7px;background:none;border:1px solid var(--border);border-radius:100px;padding:7px 15px;color:var(--muted);font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:all .3s ease;cursor:none;}
+    .cv-btn:hover{background:var(--fg);color:var(--bg);border-color:var(--fg);}
+    .cv-btn:hover svg:last-child{stroke:var(--bg);transform:translateX(3px);}
+    .cv-btn svg{flex-shrink:0;transition:stroke .3s ease,transform .3s ease;}
+
+    /* Stakeholder Management */
+    .cs-stakeholders { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:32px; }
+    .cs-stakeholder-card { background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:24px; }
+    .cs-stakeholder-role { font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+    .cs-stakeholder-need { font-size:15px; font-weight:600; color:var(--fg); margin-bottom:6px; line-height:1.3; }
+    .cs-stakeholder-resolution { font-size:14px; color:var(--muted); line-height:1.5; }
+
+    /* Hypothesis */
+    .cs-hypothesis { background:var(--bg2); border-radius:12px; padding:32px; margin-top:32px; }
+    .cs-hypothesis-label { font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:16px; }
+    .cs-hypothesis-text { font-size:clamp(18px,2.2vw,24px); font-weight:600; line-height:1.4; color:var(--fg); margin-bottom:16px; }
+    .cs-hypothesis-rationale { font-size:15px; color:var(--muted); line-height:1.6; }
+
+    /* Implementation Plan */
+    .cs-impl-steps { list-style:none; padding:0; margin:24px 0 0; display:flex; flex-direction:column; gap:12px; }
+    .cs-impl-step { display:flex; gap:16px; align-items:flex-start; }
+    .cs-impl-step-num { width:28px; height:28px; border-radius:50%; background:var(--bg2); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; color:var(--muted); flex-shrink:0; margin-top:2px; }
+    .cs-impl-step-text { font-size:15px; color:var(--muted); line-height:1.6; }
+
+    /* Lessons Learned */
+    .cs-lessons { margin-top:32px; padding-top:32px; border-top:1px solid var(--border); }
+    .cs-lessons-label { font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:20px; }
+    .cs-lessons-list { display:flex; flex-direction:column; gap:16px; }
+    .cs-lesson { display:flex; gap:16px; align-items:flex-start; }
+    .cs-lesson-num { font-size:13px; font-weight:700; color:var(--muted); min-width:24px; padding-top:2px; }
+    .cs-lesson-text { font-size:15px; color:var(--muted); line-height:1.6; }
+
+    @media(max-width:640px){
+      .cs-stakeholders { grid-template-columns:1fr; }
+      .cs-grid-5col{ grid-template-columns:1fr; }
+      .cs-grid-5col > div { max-width:280px; margin-left:auto; margin-right:auto; }
+      .cs-grid-5col > div span { text-align:center; }
+      .cs-dir-arrow { aspect-ratio:auto; padding:8px 0; }
+      .cs-dir-arrow svg { transform:rotate(90deg); }
+    }
+    .cs-sticky-sidebar{position:sticky;top:100px;}
+    @media(max-width:900px){
+      .cs-sticky-sidebar{position:static;}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .wip-badge-dot { animation:none; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="preloader" aria-hidden="true">
+  <div class="pl-panel" id="plTop"></div>
+  <div class="pl-panel" id="plBot"></div>
+</div>
+
+<div class="cursor" id="cursor" aria-hidden="true">
+  <div class="cursor-arrow">
+    <svg width="22" height="26" viewBox="0 0 22 26" fill="none">
+      <path d="M2 2L2 21L6.8 16.2L10.4 24L13.4 22.6L9.8 14.8L17 14.8L2 2Z" fill="white" stroke="#0C0C0B" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="cursor-label"><span class="cursor-label-dot"></span>
+      <span>Guest</span></div>
+</div>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">dvdrod</a>
+  <div class="nav-right">
+    <a href="index.html" class="cs-back-link">Back home</a>
+    <button class="theme-btn" id="themeBtn"><span id="tIcon">◐</span><span id="tLabel">Light</span></button>
+  </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="cs-hero">
+  <div class="cs-hero-bg" style="background:linear-gradient(145deg,#001A0A,#004A20,#00A854);"></div>
+  <img class="cs-hero-cover" src="images/quest-case.jpg" alt="">
+  <div class="cs-hero-cover-overlay"></div>
+  <span class="cs-hero-number">01</span>
+  <div class="cs-title-wrap">
+    <h1 class="cs-title">
+      <span class="tl"><span>Turning free</span></span>
+      <span class="tl"><span>trial users into</span></span>
+      <span class="tl"><span>loyal members</span></span>
+    </h1>
+  </div>
+  <div class="cs-meta-strip">
+    <div class="cs-meta-item"><div class="cs-meta-label">Company</div><div class="cs-meta-value">NeoTaste</div></div>
+    <div class="cs-meta-item"><div class="cs-meta-label">Year</div><div class="cs-meta-value">2025 - 2026</div></div>
+    <div class="cs-meta-item"><div class="cs-meta-label">Type</div><div class="cs-meta-value">Retention · Gamification</div></div>
+    <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-value">Senior Product Designer</div></div>
+  </div>
+  <div style="position:absolute;top:110px;right:44px;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;pointer-events:none;" class="scroll-hint" aria-hidden="true">
+    <div style="width:1px;height:64px;background:var(--border);position:relative;overflow:hidden;">
+      <style>.sh-anim2::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--accent);animation:shln2 2.4s ease infinite;}@keyframes shln2{0%{top:-100%}100%{top:100%}}</style>
+      <div class="sh-anim2" style="width:100%;height:100%;"></div>
+    </div>
+    <span style="font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);writing-mode:vertical-lr;">Scroll</span>
+  </div>
+</section>
+
+<!-- CONTEXT -->
+<div class="cs-summary">
+  <div class="cs-summary-inner" style="grid-template-columns:1fr;">
+    <p class="cs-summary-tldr">NeoTaste is a <strong>platform to discover restaurants, bars and cafés in major cities</strong>, mainly across Germany, with a growing presence in the UK, Netherlands, and Austria. Users get exclusive deals you can only find through NeoTaste. Partner venues use it to fill quieter tables and attract new customers.</p>
+  </div>
+</div>
+
+<!-- 01 PROBLEM STATEMENT -->
+<section class="cs-section">
+  <div class="cs-section-inner">
+    <div class="cs-section-label">01 - Problem Statement</div>
+    <h2 class="cs-section-title">Many users on trial were redeeming just one deal</h2>
+    <div class="cs-two-col">
+      <div class="cs-section-body">
+        <p>NeoTaste runs on a subscription model. When users sign up, they enter their payment details and get a 30-day free trial. If they haven't cancelled by the end of it, they're automatically charged. That window is everything: it's the only time the product can prove its value before money changes hands.</p>
+        <p>Cohort data pointed to a clear pattern: <strong>a significant portion of trial users redeemed only one deal and didn't convert</strong>. Reaching a second deal was one of the main friction points in the funnel.</p>
+        <p>The business needed users to convert before their first payment. For users, the problem was simpler: one deal isn't enough to feel the benefit. <em>How do we get new users to experience saving money when going out, often enough to see why NeoTaste is worth keeping?</em></p>
+        <p>I led the design, working closely with the UX Researcher, Data team, and PM.</p>
+      </div>
+      <div class="cs-anim">
+        <div style="background:var(--bg2);border-radius:16px;padding:32px;">
+          <div style="font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:40px;">Deal redemptions per user - trial period</div>
+          <div style="display:flex;align-items:flex-end;gap:6px;height:100px;">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+              <div style="width:100%;background:var(--accent);border-radius:4px 4px 0 0;height:100px;opacity:.8;"></div>
+              <span style="font-size:10px;color:var(--muted);">1 deal</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+              <div style="width:100%;background:var(--accent);border-radius:4px 4px 0 0;height:45px;opacity:.6;"></div>
+              <span style="font-size:10px;color:var(--muted);">2 deals</span>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;">
+              <div style="width:100%;background:var(--accent);border-radius:4px 4px 0 0;height:28px;opacity:.5;"></div>
+              <span style="font-size:10px;color:var(--muted);">3+ deals</span>
+            </div>
+          </div>
+          <div style="font-size:12px;color:var(--muted);margin-top:16px;line-height:1.5;">Reaching a second deal was a key friction point. Users who redeemed 2+ during the trial converted to paid at 4× the rate.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 HYPOTHESIS -->
+<section class="cs-section">
+  <div class="cs-section-inner">
+    <div class="cs-section-label">02 - Hypothesis</div>
+    <h2 class="cs-section-title">Why we dropped streaks and built a quest instead</h2>
+    <div class="cs-grid-2col" style="gap:48px;align-items:start;margin-top:0;">
+      <div class="cs-section-body">
+        <p>The team's first instinct was gamification. Streaks, daily check-ins, Duolingo-style mechanics. The idea: reward users for opening the app every day, build a habit, and conversion would follow.</p>
+        <p>But the streak model fell apart quickly. It rewards the wrong thing: opening the app is not the same as using it. A user who forgets on day 29 feels punished after 28 days of effort, not motivated. Streaks create anxiety, not engagement. And for NeoTaste, where the value is in going to restaurants and redeeming deals, daily opens meant nothing.</p>
+        <p>Instead of engineering habits around app opens, we'd guide users toward <em>meaningful actions</em>, the ones that actually led to conversion. The data had already told us what those were.</p>
+        <p>Before bringing this direction to stakeholders, we used Gemini to pressure-test the framing: asking it to argue against the quest approach, surface patterns from similar products, and flag assumptions we might be taking for granted. It helped sharpen the hypothesis faster than a round of internal reviews would have.</p>
+      </div>
+
+      <div class="cs-sticky-sidebar">
+        <div style="border-left:3px solid var(--accent);padding-left:28px;">
+          <p style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;">The hypothesis</p>
+          <p style="font-size:clamp(16px,1.8vw,22px);font-weight:600;line-height:1.45;color:var(--fg);margin-bottom:16px;">If we guide new users through the app's most important features in a structured quest, they'll understand what NeoTaste is actually for. And they'll be more likely to pay for it.</p>
+          <p style="font-size:14px;color:var(--muted);line-height:1.6;">Users who redeemed at least 2 deals during the trial converted to paid at 4× the rate of those who only redeemed 1. Reaching that second deal was one of the key friction points.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 RESEARCH & ANALYSIS -->
+<section class="cs-section">
+  <div class="cs-section-inner">
+    <div class="cs-section-label">03 - Research & Analysis</div>
+    <h2 class="cs-section-title">Three workstreams, one direction</h2>
+    <!-- Research workstreams -->
+    <div class="cs-anim cs-grid-3col" style="gap:20px;margin-bottom:40px;">
+
+      <div style="background:var(--bg2);border-radius:12px;padding:24px;">
+        <p style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;">Concept validation</p>
+        <p style="margin:0;font-size:14px;line-height:1.65;color:var(--fg);">The UX Researcher ran an unmoderated Maze study with non-NeoTaste users, showing an early quest concept and probing task count, reward expectations, and habit-building behaviour.</p>
+      </div>
+
+      <div style="background:var(--bg2);border-radius:12px;padding:24px;">
+        <p style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;">Competitive analysis</p>
+        <p style="margin:0;font-size:14px;line-height:1.65;color:var(--fg);">I reviewed Mobbin and habit-building apps across categories, not just direct competitors, to identify onboarding patterns that actually work when guiding users into a new behaviour.</p>
+      </div>
+
+      <div style="background:var(--bg2);border-radius:12px;padding:24px;">
+        <p style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;">Cohort data</p>
+        <p style="margin:0;font-size:14px;line-height:1.65;color:var(--fg);">We requested a specific cohort analysis from the Data team to baseline trial-period behaviour before the quest shipped, so we'd have something real to measure against post-launch.</p>
+      </div>
+
+    </div>
+
+    <div class="cs-section-body" style="margin-bottom:40px;">
+      <p>Gemini played a supporting role throughout this phase. We used it for quick qualitative exploration alongside the more structured workstreams: surfacing patterns, challenging assumptions, and getting fast directional answers in areas where a full user study was not needed. It worked well as a way to spot gaps and move faster between ideas worth testing and ones worth dropping.</p>
+    </div>
+
+    <div class="cs-section-body">
+      <p>To structure the quest, I mapped the activation flow. Every new user passes through the same stages: Sign-up, Set-up, Aha moment, Habit moment, Retention. The gap we needed to close was between the Aha and Habit moments, before the first charge landed.</p>
+      <p>We then looked at how other consumer apps handle this same challenge. From fitness to productivity tools, the pattern was consistent: guided onboarding that pairs education with small, meaningful actions. By the time users finish setup, they've already experienced the value.</p>
+    </div>
+
+    <!-- Competitor research screenshot -->
+    <div class="cs-anim" style="margin:32px 0;max-width:640px;">
+      <p class="cs-sublabel" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Competitor onboarding research</p>
+      <div style="background:var(--bg2);border-radius:12px;overflow:hidden;">
+        <img src="images/neotaste-quest/research-competitor-onboarding.webp" alt="Competitor onboarding research" style="width:100%;display:block;">
+      </div>
+      <p style="font-size:11px;color:var(--muted);margin-top:8px;line-height:1.5;">Onboarding patterns from leading apps. All of them guide users through key actions early, before expecting any habit to form.</p>
+    </div>
+
+    <div class="cs-section-body">
+      <p>Taken together, the workstreams gave us what we needed to move forward with confidence: a baseline to measure against, a validated concept, a clear pattern of what works when building habits in consumer apps, and enough qualitative signal to feel good about the direction before committing to it.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- 04 STAKEHOLDER MANAGEMENT -->
+<section class="cs-section">
+  <div class="cs-section-inner">
+    <div class="cs-section-label">04 - Stakeholder Management</div>
+    <h2 class="cs-section-title">Keeping the quest focused</h2>
+    <div class="cs-section-body">
+      <p>The core team on this project was small: the PM, the UX Researcher, and me. We were aligned early on what the quest needed to do. The tension came from above.</p>
+      <p>Management wanted to include a "refer a friend" task inside the quest. The reasoning made sense from a business perspective: referrals are a growth lever, and the quest had a captive audience of new users who were already engaged. Adding it would have given the feature guaranteed exposure.</p>
+      <p>But including it meant either extending the quest to 6 tasks or removing one of the 5 we considered core to the activation flow. Neither felt right. A longer quest risked lower completion. Removing a core task meant compromising the very thing the quest was designed to do: get users to experience the app's real value before the trial ended. Referring a friend doesn't help <em>you</em> discover NeoTaste.</p>
+      <p>Rather than pushing back on instinct alone, we ran user tests. We put both versions in front of real users and looked at how they responded to the referral task in context. The results were clear: users found it out of place. It felt like the app was asking for a favour before it had earned one. The PM, researcher, and I presented the findings together, and management agreed to drop it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 05 DESIGN PROCESS -->
+<section class="cs-section">
+  <div class="cs-section-inner">
+    <div class="cs-section-label">05 - Design Process</div>
+    <h2 class="cs-section-title">Five steps to get new users to their first real win</h2>
+    <div class="cs-section-body">
+      <p>The core question was: <em>which 5 actions would most reliably take a new user from "interested" to "I get it now"?</em> We mapped retention data against what leading apps teach users early, and landed on a clear sequence.</p>
+    </div>
+
+    <!-- VISUAL EXPLORATIONS -->
+    <div style="margin-top:56px;">
+      <div class="cs-sublabel" style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-bottom:16px;">Early explorations</div>
+      <div class="cs-section-body" style="margin:0 0 28px;"><p>Before landing on the quest format, we explored several directions: 30-day challenges, circular progress rings, and checklist-style home screens. A lot of the rapid ideation in this phase happened in Figma Make, and we also experimented with Google Stitch despite it being in early beta at the time. Both were useful for getting rough ideas in front of the team quickly without spending time on polish. Here's a snapshot of what we iterated through.</p></div>
+      <div class="cs-anim cs-grid-3col" style="gap:10px;">
+        <div style="background:#EAE9E9;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;">
+          <img src="images/neotaste-quest/visual-exploration/Screenshot%202026-03-31%20at%2013.32.58.webp" alt="30-day challenge variants" style="width:100%;height:100%;object-fit:contain;">
+        </div>
+        <div style="background:#EAE9E9;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;">
+          <img src="images/neotaste-quest/visual-exploration/Screenshot%202026-03-31%20at%2013.33.06.webp" alt="Two strategic directions" style="width:100%;height:100%;object-fit:contain;">
+        </div>
+        <div style="background:#EAE9E9;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;">
+          <img src="images/neotaste-quest/visual-exploration/Screenshot%202026-03-31%20at%2013.33.19.webp" alt="Scrollable task list" style="width:100%;height:100%;object-fit:contain;">
+        </div>
+        <div style="background:#EAE9E9;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;">
+          <img src="images/neotaste-quest/visual-exploration/Screenshot%202026-03-31%20at%2013.33.58.webp" alt="Entry point variations" style="width:100%;height:100%;object-fit:contain;">
+        </div>
+        <div style="background:#EAE9E9;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;">
+          <img src="images/neotaste-quest/visual-exploration/Screenshot%202026-03-31%20at%2013.34.04.webp" alt="Circular progress ring" style="width:100%;height:100%;object-fit:contain;">
+        </div>
+        <div style="background:#EAE9E9;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;aspect-ratio:4/3;">
+          <img src="images/neotaste-quest/visual-exploration/Screenshot%202026-03-31%20at%2013.34.15.webp" alt="Checklist format" style="width:100%;height:100%;object-fit:contain;">
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-section-body" style="margin-top:32px;">
+      <p>The key constraint that shaped the final direction: the quest had to work for users who wanted guidance without getting in the way of users who preferred to explore on their own. That ruled out anything that took up too much space or required upfront commitment, like 30-day challenges, timeline formats, or extended explanations. What remained was a compact, easy-to-ignore banner with a short task list. A progress bar to track completion and feel a sense of movement. Tasks that, when tapped, take you directly to where you can complete them. And copy that stays motivational without being pushy. The minimum needed to make the quest genuinely useful.</p>
+    </div>
+
+    <div style="margin-top:56px;">
+      <div class="cs-sublabel" style="font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-bottom:16px;">Final solution</div>
+    </div>
+
+    <div class="cs-section-body" style="margin-bottom:32px;">
+      <p>The quest lives on Home and is fully optional. Since Discover (the map view) is still the default screen, we added a floating entry point there to make sure users actually find it. It stays visible for 30 days. The quest is there to guide, not to block.</p>
+      <p>Each task was chosen because it maps directly to a moment in the activation flow, from understanding how the app works to redeeming a first deal and building a habit around it.</p>
+    </div>
+
+    <div class="cs-quests">
+      <div class="cs-quest-card">
+        <div class="cs-quest-num">TASK 01</div>
+        <div class="cs-quest-icon">👀</div>
+        <div class="cs-quest-title">Read the NeoTaste guide</div>
+        <div class="cs-quest-text">A step-by-step guide explaining how deal redemption works: how to book, what to say at the restaurant, and how to redeem. Knowing the process upfront removes one of the key reasons users don't convert.</div>
+      </div>
+      <div class="cs-quest-card">
+        <div class="cs-quest-num">TASK 02</div>
+        <div class="cs-quest-icon">🎯</div>
+        <div class="cs-quest-title">Personalise your food choices</div>
+        <div class="cs-quest-text">Select your favourite cuisines and dietary preferences. Tells the app what you're into, so the deals it shows you are actually interesting.</div>
+      </div>
+      <div class="cs-quest-card">
+        <div class="cs-quest-num">TASK 03</div>
+        <div class="cs-quest-icon">💚</div>
+        <div class="cs-quest-title">Save restaurants you love</div>
+        <div class="cs-quest-text">Bookmark 3 restaurants to your favourites. Start building your own list. The app gets more useful the more it knows about you.</div>
+      </div>
+      <div class="cs-quest-card">
+        <div class="cs-quest-num">TASK 04</div>
+        <div class="cs-quest-icon">🎁</div>
+        <div class="cs-quest-title">Find & redeem your first 2 deals</div>
+        <div class="cs-quest-text">Unlock and claim 2 exclusive deals. This is the core value. This is why you're here.</div>
+      </div>
+      <div class="cs-quest-card">
+        <div class="cs-quest-num">TASK 05</div>
+        <div class="cs-quest-icon">⭐</div>
+        <div class="cs-quest-title">Rate & review your experience</div>
+        <div class="cs-quest-text">Leave a review after redeeming a deal. Helps others find good spots, and builds the community you're part of.</div>
+      </div>
+      <div class="cs-quest-card" style="display:flex;align-items:center;justify-content:center;">
+        <div style="text-align:center;">
+          <div style="font-size:32px;margin-bottom:12px;">🏆</div>
+          <div style="font-family:'Inter',sans-serif;font-size:15px;font-weight:700;margin-bottom:8px;">Complete all 5</div>
+          <div style="font-size:13px;color:var(--muted);">Earn "Taster" level + confetti celebration</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-anim" style="margin-top:64px;">
+      <p class="cs-sublabel" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:24px;">The design solution</p>
+      <div class="cs-grid-5col" style="gap:16px;align-items:start;">
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <img src="images/neotaste-quest/screen-entry-point.webp" alt="Quest entry point screen" style="width:100%;display:block;">
+          <span style="font-size:11px;color:var(--muted);line-height:1.4;">Floating entry point on Discover (map view)</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <img src="images/neotaste-quest/screen-quest-new.webp" alt="Quest screen - new user" style="width:100%;display:block;">
+          <span style="font-size:11px;color:var(--muted);line-height:1.4;">Quest view: first time, tasks not yet started</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <img src="images/neotaste-quest/screen-quest-notnew.webp" alt="Quest screen - in progress" style="width:100%;display:block;">
+          <span style="font-size:11px;color:var(--muted);line-height:1.4;">Quest view: returning user, tasks in progress</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <img src="images/neotaste-quest/screen-quest-completed.webp" alt="Quest screen - all tasks completed" style="width:100%;display:block;">
+          <span style="font-size:11px;color:var(--muted);line-height:1.4;">Quest view: all 5 tasks completed</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <img src="images/neotaste-quest/screen-celebration.webp" alt="Celebration screen on quest completion" style="width:100%;display:block;">
+          <span style="font-size:11px;color:var(--muted);line-height:1.4;">Celebration: confetti + Taster badge unlock</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="cs-anim" style="margin-top:64px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+        <p class="cs-sublabel" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0;">Full feature flow</p>
+        <a href="https://www.figma.com/design/9EolZSV9Qa4YBIxtuajdrS/Quest?node-id=3-3165&t=0Kqp8iv85MSAT2tL-1" target="_blank" rel="noopener" class="cv-btn">
+          <svg width="10" height="15" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;"><path d="M50 300c27.6 0 50-22.4 50-50v-50H50c-27.6 0-50 22.4-50 50s22.4 50 50 50z" fill="#0ACF83"/><path d="M0 150c0-27.6 22.4-50 50-50h50v100H50c-27.6 0-50-22.4-50-50z" fill="#A259FF"/><path d="M0 50C0 22.4 22.4 0 50 0h50v100H50C22.4 100 0 77.6 0 50z" fill="#F24E1E"/><path d="M100 0h50c27.6 0 50 22.4 50 50s-22.4 50-50 50h-50V0z" fill="#FF7262"/><path d="M200 150c0 27.6-22.4 50-50 50s-50-22.4-50-50 22.4-50 50-50 50 22.4 50 50z" fill="#1ABCFE"/></svg>
+          Explore in Figma
+          <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M2 12L12 2M12 2H4M12 2V10"/></svg>
+        </a>
+      </div>
+      <a href="images/neotaste-quest/figma-file-view.webp" target="_blank" rel="noopener" style="display:block;border-radius:16px;overflow:hidden;border:1px solid var(--border);transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+        <img src="images/neotaste-quest/figma-file-view.webp" alt="Full Figma file - Quest design system, flows and components" style="width:100%;display:block;">
+      </a>
+    </div>
+
+    <div style="margin-top:60px;margin-bottom:0;">
+      <p class="cs-sublabel" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:24px;">Key Design Decisions</p>
+      <div class="cs-steps">
+        <div class="cs-step">
+          <div class="cs-step-num">01</div>
+          <div class="cs-step-content">
+            <div class="cs-step-title">Why 5 tasks, not 3 or 10</div>
+            <div class="cs-step-text">5 was the sweet spot. Enough tasks to walk users through the app's core features, but short enough to feel achievable. Too few and the quest wouldn't cover what mattered. Too many and completion would drop. We wanted users to finish it.</div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">02</div>
+          <div class="cs-step-content">
+            <div class="cs-step-title">The reward debate</div>
+            <div class="cs-step-text">We considered a free month for completing the quest, but dropped it. The goal was to build a habit around the app's value, not to offer a financial incentive. Confetti on completion plus a badge through the Levels system felt more aligned: it signals achievement without creating a transactional dynamic.</div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">03</div>
+          <div class="cs-step-content">
+            <div class="cs-step-title">The levels system: how you earn your badge</div>
+            <div class="cs-step-text">Thresholds based on retention data: Taster (2 deals), Foodie (5), Culinary Star (15), Gourmet (30), Food Legend (55). Users earn levels by redeeming deals, not just by completing the quest, so anyone can progress. Quest completers naturally hit Taster. Future idea: ratings and saved restaurants could unlock levels too.</div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">04</div>
+          <div class="cs-step-content">
+            <div class="cs-step-title">Quest is optional, but well-placed</div>
+            <div class="cs-step-text">Not forced into the critical path. The quest lives on Home, but since Discover is still the default screen, we added a floating entry point on the map view. Users who never visit Home on their own will still see it. Press it, land on Home, find the quest. It stays visible for 30 days.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Side quest 01: Food Preferences -->
+    <div style="margin-top:60px;">
+      <p class="cs-sublabel" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:24px;">Side quest 01: Food Preferences</p>
+      <div class="cs-section-body" style="margin:0 0 28px;"><p>One of the quest tasks prompts users to set their food preferences: where they like to eat, any dietary restrictions, and which cuisines they enjoy. The goal was to collect enough signal early to personalise their home feed and surface restaurant recommendations that actually matched their taste. A user who sees relevant deals from day one is far more likely to redeem one.</p></div>
+      <div class="cs-anim cs-grid-5col" style="gap:16px;margin-bottom:32px;">
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <img src="images/neotaste-quest/screen-preferences01.webp" alt="Food preferences step 1" style="width:100%;display:block;">
+          <span style="font-size:11px;color:var(--muted);line-height:1.4;">Step 1: eating location preference</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <img src="images/neotaste-quest/screen-preferences02.webp" alt="Food preferences step 2" style="width:100%;display:block;">
+          <span style="font-size:11px;color:var(--muted);line-height:1.4;">Step 2: dietary restrictions</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <img src="images/neotaste-quest/screen-preferences03.webp" alt="Food preferences step 3" style="width:100%;display:block;">
+          <span style="font-size:11px;color:var(--muted);line-height:1.4;">Step 3: food category selection</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <img src="images/neotaste-quest/screen-preferences04.webp" alt="Food preferences entry point in profile" style="width:100%;display:block;">
+          <span style="font-size:11px;color:var(--muted);line-height:1.4;">Profile: entry point to edit preferences</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <img src="images/neotaste-quest/screen-preferences05.webp" alt="Food preferences edit screen" style="width:100%;display:block;">
+          <span style="font-size:11px;color:var(--muted);line-height:1.4;">Edit view: update saved categories</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Side quest 02: Levels Refresh -->
+    <div style="margin-top:60px;">
+      <p class="cs-sublabel" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:24px;">Side quest 02: Levels Refresh</p>
+      <div class="cs-section-body" style="margin:0 0 28px;"><p>The Levels screen already existed, tied to deals redeemed, but almost nobody knew about it. By redesigning it with new level names, badges, and a celebration screen, we kept the gamification element where it actually made sense: as a reward for real actions, not app opens. The quest and the Levels refresh became one connected project.</p></div>
+
+      <!-- Row 1: Levels screens -->
+      <div class="cs-anim cs-grid-5col" style="gap:16px;margin-bottom:32px;">
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <img src="images/neotaste-quest/screen-old-levels.webp" alt="Old levels screen" style="width:100%;display:block;">
+          <span style="font-size:11px;color:var(--muted);line-height:1.4;">Before: original levels screen</span>
+        </div>
+
+        <!-- Separator: arrow + label -->
+        <div class="cs-dir-arrow" style="display:flex;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:9/19.5;gap:10px;">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12h14M13 6l6 6-6 6" stroke="var(--muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;opacity:.5;">Refresh</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <img src="images/neotaste-quest/screen-levels-empty-state.webp" alt="Levels screen empty state" style="width:100%;display:block;">
+          <span style="font-size:11px;color:var(--muted);line-height:1.4;">Levels screen: empty state, no deals redeemed yet</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <img src="images/neotaste-quest/screen-levels-foodlegend.webp" alt="Levels screen Food Legend badge" style="width:100%;display:block;">
+          <span style="font-size:11px;color:var(--muted);line-height:1.4;">Levels screen: Food Legend, highest level (55 deals)</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <img src="images/neotaste-quest/screen-levels-profilewith.webp" alt="Profile screen with badge" style="width:100%;display:block;">
+          <span style="font-size:11px;color:var(--muted);line-height:1.4;">Profile screen: badge displayed after levelling up</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Design system updates -->
+    <div style="margin-top:60px;">
+      <p class="cs-sublabel" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:24px;">Design system updates</p>
+      <div class="cs-anim cs-grid-2col" style="gap:40px;align-items:center;">
+        <div style="background:var(--bg2);border-radius:12px;overflow:hidden;">
+          <img src="images/neotaste-quest/design-system-updates.webp" alt="Design system colour updates for Levels" style="width:100%;display:block;">
+        </div>
+        <div class="cs-section-body">
+          <p>The Levels refresh meant new assets that needed to live in Umami, NeoTaste's component library. We added 10 new colour tokens: two per level (one for the badge, one lighter tone for the confetti animation), built to scale if new levels are introduced later.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:60px;">
+      <p class="cs-sublabel" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:24px;">Interactions</p>
+      <div class="cs-anim cs-grid-3col" style="gap:24px;">
+
+        <div style="display:flex;flex-direction:column;gap:10px;align-items:center;">
+          <div style="width:100%;max-width:280px;border-radius:24px;overflow:hidden;border:1px solid var(--border);">
+            <video autoplay muted loop playsinline style="width:100%;display:block;">
+              <source src="images/neotaste-quest/food-preferences.mp4" type="video/mp4">
+            </video>
+          </div>
+          <span style="font-size:11px;color:var(--muted);line-height:1.4;text-align:center;">Food preferences: selection flow</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;align-items:center;">
+          <div style="width:100%;max-width:280px;border-radius:24px;overflow:hidden;border:1px solid var(--border);">
+            <video autoplay muted loop playsinline style="width:100%;display:block;">
+              <source src="images/neotaste-quest/food-preferences-progress-bar.mp4" type="video/mp4">
+            </video>
+          </div>
+          <span style="font-size:11px;color:var(--muted);line-height:1.4;text-align:center;">Food preferences: task progress bar animation</span>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;align-items:center;">
+          <div style="width:100%;max-width:280px;border-radius:24px;overflow:hidden;border:1px solid var(--border);">
+            <video autoplay muted loop playsinline style="width:100%;display:block;">
+              <source src="images/neotaste-quest/badge-animation.mp4" type="video/mp4">
+            </video>
+          </div>
+          <span style="font-size:11px;color:var(--muted);line-height:1.4;text-align:center;">Badge unlock: confetti celebration on level up</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="margin-top:60px;">
+      <p class="cs-sublabel" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Implementation Plan</p>
+      <div class="cs-steps">
+        <div class="cs-step">
+          <div class="cs-step-num">01</div>
+          <div class="cs-step-content">
+            <div class="cs-step-title">A/B test rollout</div>
+            <div class="cs-step-text">Launched to 25% of new users, compared against a control group that saw nothing. Data team had tracking in place from day one.</div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">02</div>
+          <div class="cs-step-content">
+            <div class="cs-step-title">Design system updates</div>
+            <div class="cs-step-text">10 new colours added to Umami (NeoTaste's component library): two per level, one for the badge, one for the confetti animation. Built to scale if new levels are added later.</div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">03</div>
+          <div class="cs-step-content">
+            <div class="cs-step-title">Timeline</div>
+            <div class="cs-step-text">About 2 months from brief to shipped. Scope negotiations and the Levels redesign took most of that time. The UI and interactions came together faster.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 METRICS & KPIs -->
+<section class="cs-section">
+  <div class="cs-section-inner">
+    <div class="cs-section-label">06 - Metrics & KPIs</div>
+    <h2 class="cs-section-title">Two bets. Both paid off.</h2>
+    <div class="cs-section-body">
+      <p>The Quest launched to 25% of new users, tested against a group that saw nothing. After 30 days, the results were clear.</p>
+      <p>The main goal was trial-to-paid conversion. The second bet was that better feature discovery would naturally lead to more deal redemptions during the trial. The numbers confirmed both.</p>
+    </div>
+
+    <div class="cs-metrics">
+      <div class="cs-metric">
+        <div class="cs-metric-val">+22%</div>
+        <div class="cs-metric-label">More free trial users converted to paid, among those who used the quest</div>
+      </div>
+      <div class="cs-metric">
+        <div class="cs-metric-val">~48%</div>
+        <div class="cs-metric-label">Quest completion rate (optional feature, <span style="white-space:nowrap">30-day window)</span></div>
+      </div>
+      <div class="cs-metric">
+        <div class="cs-metric-val">2×</div>
+        <div class="cs-metric-label">More deals redeemed in month 1 by quest completers vs non-completers</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONCLUSION -->
+<section class="cs-section">
+  <div class="cs-section-inner">
+    <div class="cs-section-label">07 - Conclusion</div>
+    <h2 class="cs-section-title">Guide users early.</h2>
+    <div class="cs-section-body">
+      <p style="margin-bottom:40px;">Users sometimes don't need more features. They need guidance. Once they've redeemed a couple of deals and seen the app work for them, they got it and they stayed. The quest was our way of making that happen without forcing anything.</p>
+    </div>
+    <div style="margin-top:48px;">
+      <p class="cs-sublabel" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Lessons Learned</p>
+      <div class="cs-steps">
+        <div class="cs-step">
+          <div class="cs-step-num">01</div>
+          <div class="cs-step-content">
+            <div class="cs-step-title">Achievement beats discounts</div>
+            <div class="cs-step-text">The first idea was an extra free month for completing the quest. We dropped it: too costly, and it teaches users to expect payoffs for basic actions. Confetti plus a badge on your profile proved more motivating. People respond to progress and status more than cash-value incentives.</div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">02</div>
+          <div class="cs-step-content">
+            <div class="cs-step-title">Optional features need a great entry point</div>
+            <div class="cs-step-text">Because the quest was voluntary, placement was everything. The floating entry point on Discover (the default screen) saw 48% engagement. Early prototypes that relied on users finding the quest on Home on their own saw 8%. The feature hadn't changed. The entry point had.</div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">03</div>
+          <div class="cs-step-content">
+            <div class="cs-step-title">Constraints sharpen decisions</div>
+            <div class="cs-step-text">Having to justify every task forced a sharper question: which 5 actions actually predict whether someone stays? That pressure made the design tighter.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:48px;">
+      <p class="cs-sublabel" style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">What's next</p>
+      <div class="cs-steps">
+        <div class="cs-step">
+          <div class="cs-step-num">01</div>
+          <div class="cs-step-content">
+            <div class="cs-step-title">Levels beyond deal redemptions</div>
+            <div class="cs-step-text">The next step is exploring whether other actions, like leaving a review or saving restaurants, could also count toward levelling up, making the system feel less tied to spending and more reflective of how people actually use the app.</div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">02</div>
+          <div class="cs-step-content">
+            <div class="cs-step-title">Seasonal/themed quests</div>
+            <div class="cs-step-text">The quest in its current form is static, always the same tasks in the same order. Introducing limited-time or themed versions would keep the experience fresh and push engagement beyond initial onboarding.</div>
+          </div>
+        </div>
+        <div class="cs-step">
+          <div class="cs-step-num">03</div>
+          <div class="cs-step-content">
+            <div class="cs-step-title">Social progression & friendly competition</div>
+            <div class="cs-step-text">Users see their own level, but not friends' levels. Experiment with shared leaderboards or "beat your friend" challenges to add social motivation and drive referrals.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT -->
+<div class="cs-next cs-next--wip">
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+    <p class="cs-next-label" style="margin-bottom:0;">Next project</p>
+    <span class="wip-badge"><span class="wip-badge-dot"></span>Work in progress</span>
+  </div>
+  <div class="cs-next-inner">
+    <div>
+      <div class="cs-next-name">Referral A/B Test</div>
+      <div class="cs-next-company">NeoTaste / 2025 - 2026</div>
+    </div>
+    <div class="cs-next-arrow">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 15L15 3M15 3H5M15 3V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+  </div>
+</div>
+
+<footer class="cs-footer"><p>© 2026 David Rodriguez</p></footer>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+  const html=document.documentElement,tBtn=document.getElementById('themeBtn'),tIcon=document.getElementById('tIcon'),tLbl=document.getElementById('tLabel');
+  let dark=(localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'))==='dark';
+  tIcon.textContent=dark?'◐':'◑';tLbl.textContent=dark?'Light':'Dark';
+  tBtn.addEventListener('click',()=>{dark=!dark;html.setAttribute('data-theme',dark?'dark':'light');localStorage.setItem('theme',dark?'dark':'light');tIcon.textContent=dark?'◐':'◑';tLbl.textContent=dark?'Light':'Dark';});
+  if(window.matchMedia('(pointer: fine)').matches){
+    const cursorEl=document.getElementById('cursor');
+    document.addEventListener('mousemove',e=>{cursorEl.style.transform=`translate(${e.clientX}px,${e.clientY}px)`;cursorEl.style.opacity='1';});
+    document.addEventListener('mouseleave',()=>cursorEl.style.opacity='0');
+    document.addEventListener('mouseenter',()=>cursorEl.style.opacity='1');
+    document.querySelectorAll('a,button,.cs-result-card').forEach(el=>{
+      el.addEventListener('mouseenter',()=>document.body.classList.add('is-hovering'));
+      el.addEventListener('mouseleave',()=>document.body.classList.remove('is-hovering'));
+    });
+  }
+  const preloader=document.getElementById('preloader'),plTop=document.getElementById('plTop'),plBot=document.getElementById('plBot');
+  window.addEventListener('load',()=>{
+    setTimeout(()=>{
+      gsap.to(plTop,{yPercent:-100,duration:.5,ease:'power3.inOut'});
+      gsap.to(plBot,{yPercent:100,duration:.5,ease:'power3.inOut',onComplete:()=>{preloader.style.display='none';initAnim();}});
+    },80);
+  });
+  gsap.registerPlugin(ScrollTrigger);
+  function initAnim(){
+    // both .cs-visual and .cs-meta-strip use gsap.set() — preloader covers the page on load
+    gsap.set('.cs-meta-strip',{opacity:0,y:20});
+    gsap.set('.cs-visual',{opacity:0,y:24});
+
+    // Skip scroll animations for users who prefer reduced motion
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      document.querySelectorAll('.cs-visual').forEach(el=>{el.style.opacity='1';el.style.transform='none';});
+      return;
+    }
+
+    gsap.to('.cs-title .tl span',{y:0,duration:1,stagger:.1,ease:'power3.out',delay:.05});
+    gsap.to('.cs-meta-strip',{opacity:1,y:0,duration:.7,ease:'power2.out',delay:.6});
+    gsap.to('.scroll-hint',{opacity:1,duration:.5,delay:1.1});
+    const st=(el,start,extra={})=>({trigger:el,start,...extra});
+    gsap.utils.toArray('.cs-section-title').forEach(el=>{gsap.fromTo(el,{opacity:0,y:28},{opacity:1,y:0,duration:.75,ease:'power2.out',scrollTrigger:st(el,'top 95%')});});
+    gsap.utils.toArray('.cs-section-label').forEach(el=>{gsap.fromTo(el,{opacity:0,y:12},{opacity:1,y:0,duration:.5,ease:'power2.out',scrollTrigger:st(el,'top 95%')});});
+    gsap.utils.toArray('.cs-sublabel').forEach(el=>{gsap.fromTo(el,{opacity:0,y:12},{opacity:1,y:0,duration:.5,ease:'power2.out',scrollTrigger:st(el,'top 95%')});});
+    gsap.utils.toArray('.cs-section-body p').forEach(el=>{gsap.fromTo(el,{opacity:0,y:18},{opacity:1,y:0,duration:.6,ease:'power2.out',scrollTrigger:st(el,'top 92%')});});
+    gsap.utils.toArray('.cs-finding,.cs-step,.cs-result-card,.cs-quest-card').forEach(el=>{gsap.fromTo(el,{opacity:0,y:24},{opacity:1,y:0,duration:.6,ease:'power2.out',scrollTrigger:st(el,'top 92%')});});
+    gsap.utils.toArray('.cs-anim').forEach(el=>{gsap.fromTo(el,{opacity:0,y:24},{opacity:1,y:0,duration:.7,ease:'power2.out',scrollTrigger:st(el,'top 88%')});});
+    gsap.utils.toArray('.cs-visual').forEach(el=>{gsap.to(el,{opacity:1,y:0,duration:.8,ease:'power2.out',scrollTrigger:st(el,'top 90%')});});
+    gsap.utils.toArray('.cs-metric-val').forEach(el=>{gsap.fromTo(el,{opacity:0,y:16},{opacity:1,y:0,duration:.7,ease:'power2.out',scrollTrigger:st(el,'top 92%')});});
+    gsap.utils.toArray('.cs-metric-label').forEach(el=>{gsap.fromTo(el,{opacity:0,y:10},{opacity:1,y:0,duration:.5,ease:'power2.out',scrollTrigger:st(el,'top 95%')});});
+    gsap.utils.toArray('.cs-quote').forEach(el=>{gsap.fromTo(el,{opacity:0,x:-20},{opacity:1,x:0,duration:.7,ease:'power2.out',scrollTrigger:st(el,'top 92%')});});
+    const summEl=document.querySelector('.cs-summary');if(summEl)gsap.fromTo(summEl,{opacity:0,y:24},{opacity:1,y:0,duration:.7,ease:'power2.out',scrollTrigger:st(summEl,'top 88%')});
+    // Refresh once early, then again after all images are fully loaded
+    setTimeout(()=>ScrollTrigger.refresh(),400);
+    window.addEventListener('load',()=>ScrollTrigger.refresh());
+  }
+  const navEl=document.getElementById('nav');
+  let navScrolled=false;
+  window.addEventListener('scroll',()=>{const s=window.scrollY>60;if(s===navScrolled)return;navScrolled=s;navEl.classList.toggle('scrolled',s);},{passive:true});
+</script>
+</body>
+</html>
